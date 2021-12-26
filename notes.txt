@@ -1,0 +1,17 @@
+background color: #fff
+text-color: #363645
+primary color: #e53935
+secondary color: #ff5252
+card-color: #ef6c00
+secod-card-color: #6effff
+dark background color: #000
+dark-text-color : #fff 
+
+
+for the dashboard follow this design
+https://dribbble.com/shots/15501287-Finance-Dashboard-Design
+
+header will be transparent.
+for the header follow 
+https://oril.co/
+

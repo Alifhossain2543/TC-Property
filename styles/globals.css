@@ -1,16 +1,21 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.navlink {
+  @apply  opacity-[0.5] font-extrabold hover:opacity-[1] cursor-pointer transition-opacity ease-in-out duration-300
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+
+
+.navlink.active {
+    @apply h-full flex items-center justify-center font-extrabold  relative after:content-[""] after:w-full after:h-[3px] after:absolute after:bottom-[-3px] after:left-0  after:bg-primary-light !opacity-[1]
 }
 
-* {
-  box-sizing: border-box;
+.headerBtn {
+    @apply p-[10px] text-center rounded-xl bg-secondary shadow-lg cursor-pointer active:scale-[0.9] transition-all text-text-color-dark font-extrabold hover:bg-text-color-dark hover:text-secondary hover:border-secondary hover:border-[1px]
+}
+
+.container {
+  @apply p-[10px]
 }

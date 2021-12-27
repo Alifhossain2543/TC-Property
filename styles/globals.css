@@ -9,13 +9,17 @@
 
 
 .navlink.active {
-    @apply h-full flex items-center justify-center font-extrabold  relative after:content-[""] after:w-full after:h-[3px] after:absolute after:bottom-[-3px] after:left-0  after:bg-primary-light !opacity-[1]
+    @apply h-full flex items-center justify-center font-extrabold  relative after:content-[""] after:w-full after:h-[3px] after:absolute after:bottom-[-2px] after:left-0  after:bg-primary-light !opacity-[1] text-secondary
 }
 
 .headerBtn {
-    @apply p-[10px] text-center rounded-xl bg-secondary shadow-lg cursor-pointer active:scale-[0.9] transition-all text-text-color-dark font-extrabold hover:bg-text-color-dark hover:text-secondary hover:border-secondary hover:border-[1px]
+    @apply p-[8px] text-center rounded-full bg-secondary shadow-lg cursor-pointer active:scale-[0.9] transition-all text-[15px] text-text-color-dark font-extrabold hover:bg-text-color-dark hover:text-secondary hover:border-secondary hover:border-[1px]
 }
 
 .container {
-  @apply p-[10px]
+  @apply p-10
+}
+
+.bar-of-progress {
+  @apply z-[50]
 }

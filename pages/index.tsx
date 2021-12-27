@@ -1,78 +1,86 @@
-import { closeSync } from 'fs'
 import type { NextPage } from 'next'
 import { useEffect } from 'react'
 import {useInView} from 'react-intersection-observer'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import {changeLocation}from "../store/uiSlice"
 import { useRouter } from 'next/router'
+import HomeSection from '../components/base/HomeSection'
+import ServicesSection from '../components/base/ServicesSection'
+// import ExpertiseSection from '../components/base/ExpertiseSection'
+import { RootState } from "../store/store"
 
 const Home: NextPage = () => {
   const dispatch = useDispatch()
     const router = useRouter()
+    const location = useSelector((state: RootState) => state.location.location)
 
     const parthName = router.pathname
 
-const {ref : homeRef, inView : homInView, entry: homeEntry} = useInView({threshold : 0.5})
+const {ref : homeRef, inView : homInView} = useInView({threshold : 0.2})
 const {
   ref: servicesRef,
   inView: servicesInView,
-  entry: servicesEntry,
-} = useInView({ threshold: 0.5 })
-const {
-  ref: expertiseRef,
-  inView: expertiseInview,
-  entry: expertiseEntry,
-} = useInView({ threshold: 0.5 })
+} = useInView({ threshold: 0.2 })
+// const {
+//   ref: expertiseRef,
+//   inView: expertiseInview,
+// } = useInView({ threshold: 0.2 })
 
-  // const home = homeEntry?.target.id
-  // const services = servicesEntry?.target.id
-  // const expertise = expertiseEntry?.target.id
-
-//   console.log(
-//     homInView + "Home in view"
-//   )
-//   console.log(servicesInView + "Services in view")
-// console.log(expertiseInview + "Expertise in view")
 
 useEffect(() => {
  
   if(homInView && servicesInView) {
+
     dispatch(changeLocation("home"))
   }else if(homInView && !servicesInView) {
+
         dispatch(changeLocation("home"))
 
   }else if(!homInView && servicesInView) {
         dispatch(changeLocation("services"))
-  }else if (servicesInView && expertiseInview) {
-            dispatch(changeLocation("services"))
-
-  }else if (servicesInView && !expertiseInview) {
-                dispatch(changeLocation("services"))
-
-  }else if (!servicesInView && expertiseInview) {
-    dispatch(changeLocation("expertise"))
   }
+  // else if (servicesInView && expertiseInview) {
+  //           dispatch(changeLocation("services"))
+
+  // }else if (servicesInView && !expertiseInview) {
+  //               dispatch(changeLocation("services"))
+
+  // }else if (!servicesInView && expertiseInview) {
+  //   dispatch(changeLocation("expertise"))
+  // }
 
 }, [homInView,
 servicesInView,
-expertiseInview, dispatch, parthName])
+// expertiseInview,
+ dispatch, parthName])
 
   return (
     <>
-      {/* Main Content */}
-      <section ref={homeRef} id="home" className="h-[80vh]">
-        <h1 className="text-3xl text-text-color font-bold">This is home!</h1>
+      <section ref={homeRef} id="home" className="p-10 relative">
+        <HomeSection />
+        <div className="fixed left-[5px] top-[50%] md:hidden">
+          <div
+            className={`first border-primary-light hover:bg-primary-light ${
+              location == "home" ? "bg-primary-light" : ""
+            } border-4 h-[20px] w-[20px] rounded-full cursor-pointer`}
+            onClick={() => router.push("/#home")}
+          ></div>
+          <div
+            className={`second border-card-two-light  ${
+              location == "services" ? "bg-card-two" : ""
+            } border-4 hover:bg-card-two  h-[20px] w-[20px] mt-[20px] rounded-full cursor-pointer`}
+            onClick={() => router.push("/#services")}
+          ></div>
+        </div>
       </section>
 
-      <section ref={servicesRef} id="services" className="h-[80vh]">
-        <h1 className="text-3xl text-text-color font-bold">This is Service!</h1>
+      <section ref={servicesRef} id="services" className="p-10">
+        <ServicesSection />
       </section>
 
-      <section ref={expertiseRef} id="expertise" className="h-[80vh]">
-        <h1 className="text-3xl text-text-color font-bold">
-          This is Expertise!
-        </h1>
-      </section>
+      {/* <section ref={expertiseRef} id="expertise" className="container">
+       <ExpertiseSection/>
+      </section> */}
     </>
   )
 }

@@ -30,3 +30,7 @@ input {
 .bar-of-progress {
   @apply z-[50]
 }
+
+.dPage {
+  @apply bg-text-color-dark rounded-lg shadow-xl mr-[5px] p-[20px] pl-[30px]  mb-[10px] mt-[10px] w-full
+}

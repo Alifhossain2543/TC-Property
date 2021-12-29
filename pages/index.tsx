@@ -1,19 +1,17 @@
 import type { NextPage } from 'next'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import {useInView} from 'react-intersection-observer'
 import { useDispatch, useSelector } from 'react-redux'
 import {changeLocation}from "../store/uiSlice"
 import { useRouter } from 'next/router'
 import HomeSection from '../components/base/HomeSection'
 import ServicesSection from '../components/base/ServicesSection'
-// import ExpertiseSection from '../components/base/ExpertiseSection'
 import { RootState } from "../store/store"
 
 const Home: NextPage = () => {
   const dispatch = useDispatch()
     const router = useRouter()
     const location = useSelector((state: RootState) => state.location.location)
-
     const parthName = router.pathname
 
 const {ref : homeRef, inView : homInView} = useInView({threshold : 0.2})
@@ -21,11 +19,6 @@ const {
   ref: servicesRef,
   inView: servicesInView,
 } = useInView({ threshold: 0.2 })
-// const {
-//   ref: expertiseRef,
-//   inView: expertiseInview,
-// } = useInView({ threshold: 0.2 })
-
 
 useEffect(() => {
  
@@ -39,19 +32,10 @@ useEffect(() => {
   }else if(!homInView && servicesInView) {
         dispatch(changeLocation("services"))
   }
-  // else if (servicesInView && expertiseInview) {
-  //           dispatch(changeLocation("services"))
 
-  // }else if (servicesInView && !expertiseInview) {
-  //               dispatch(changeLocation("services"))
-
-  // }else if (!servicesInView && expertiseInview) {
-  //   dispatch(changeLocation("expertise"))
-  // }
 
 }, [homInView,
 servicesInView,
-// expertiseInview,
  dispatch, parthName])
 
   return (
@@ -78,9 +62,6 @@ servicesInView,
         <ServicesSection />
       </section>
 
-      {/* <section ref={expertiseRef} id="expertise" className="container">
-       <ExpertiseSection/>
-      </section> */}
     </>
   )
 }

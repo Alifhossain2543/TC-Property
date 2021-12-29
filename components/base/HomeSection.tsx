@@ -25,6 +25,7 @@ const HomeSection = () => {
         </div>
         <div className='w-[70%] lg:w-[50%] flex'>
           <Image
+          placeholder="blur"
             className='self-center object-contain'
             src={Homesection}
             alt="home section image"

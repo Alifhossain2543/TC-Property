@@ -62,11 +62,12 @@ const ServicesSection = () => {
                 variants={variants}
               >
                 <Image
+                placeholder="blur"
                   width={100}
                   height={100}
                   src={image}
                   alt={name}
-                  className="mb-[10px] object-contain"
+                  className="mb-[10px] object-contain select-none"
                 />
                 <h1 className="text-[25px] opacity-[0.8] font-extrabold text-center mt-20px] ">
                   {name}

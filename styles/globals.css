@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@layer components {
+input {
+  @apply outline-none
+}
+}
+
 .navlink {
   @apply  opacity-[0.5] font-extrabold hover:opacity-[1] cursor-pointer transition-opacity ease-in-out duration-300
 }

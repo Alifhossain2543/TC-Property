@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-import { BsArrowLeftShort } from "react-icons/bs"
+import { BsArrowLeftShort, BsStar } from "react-icons/bs"
 import { BiAddToQueue } from "react-icons/bi"
 import { AiOutlineFileDone } from "react-icons/ai"
 import { BsListTask } from "react-icons/bs"
@@ -25,8 +25,13 @@ const dashboardOptions = [
   },
   {
     Icon: MdOutlineManageSearch,
-    name: "Manage Request",
+    name: "Manage List",
     path: "/dashboard/manage-request",
+  },
+  {
+    Icon: BsStar,
+    name: "Reviews",
+    path: "/dashboard/reviews",
   },
   {
     Icon: MdNotificationsNone,
@@ -34,7 +39,7 @@ const dashboardOptions = [
     path: "/dashboard/notifications",
   },
 ]
-
+// console.log(pathname)
   return (
     <div
       className={`flex rounded-lg transition-all duration-200 ease-in-out ${
@@ -43,14 +48,14 @@ const dashboardOptions = [
     >
       {/* Options */}
 
-      <div className="w-[100%] h-[90%] pt-[60px] pb-[20px] relative">
+      <div className="w-[100%] h-[550px] pb-[20px] absolute">
         <ul className="text-center w-[100%] flex-col">
           {dashboardOptions.map(({ name, Icon, path }, inx) => {
             return (
               <li
                 onClick={() => router.push(path)}
                 key={inx}
-                className={`opacity-[0.7] hover:opacity-[1] cursor-pointer hover:bg-primary-light hover:border-l-4 md:hover:border-l-8 hover:border-text-color-light hover:text-text-color-dark ${
+                className={`opacity-[0.7] hover:opacity-[1] cursor-pointer hover:bg-primary-light/[0.7] hover:border-l-4 md:hover:border-l-8 hover:border-text-color-light/[0.7] hover:text-text-color-dark ${
                   pathname == path
                     ? "opacity-[1] bg-primary-light border-l-4 md:border-l-8 border-text-color-light text-text-color-dark"
                     : ""
@@ -59,7 +64,7 @@ const dashboardOptions = [
                 } gap-[10px] font-bold`}
               >
                 <Icon
-                  size={`${isToggled ? 30 : 25}`}
+                  size={`${isToggled ? 20 : 25}`}
                   className="transition-all duration-200 ease-in-out"
                 />{" "}
                 <p
@@ -80,7 +85,7 @@ const dashboardOptions = [
           } gap-[10px] font-bold`}
         >
           <FiLogOut
-            size={`${isToggled ? 30 : 25}`}
+            size={`${isToggled ? 20 : 25}`}
             className="transition-all duration-200 ease-in-out"
           />
           <p
@@ -94,9 +99,14 @@ const dashboardOptions = [
 
         {/* manage account */}
         <div
-          className={`cursor-pointer absolute shadow-xl bottom-0 left-0 bg-text-color-dark rounded-full hover:text-primary-dark text-primary-light mt-[10px] mb-[20px] p-[7px] flex items-center ${
+          onClick={() => router.push("/dashboard/manage-account")}
+          className={`cursor-pointer absolute shadow-xl bottom-0 left-0 bg-text-color-dark rounded-full hover:bg-primary/[0.7] hover:text-text-color-dark mt-[10px] mb-[20px] p-[7px] flex items-center ${
             isToggled ? "justify-center" : "justify-start"
-          } gap-[10px] font-bold`}
+          } gap-[7px] font-bold ${
+            pathname == "/dashboard/manage-account"
+              ? "bg-primary text-text-color-dark"
+              : ""
+          }`}
         >
           <Image
             width={25}
@@ -106,7 +116,7 @@ const dashboardOptions = [
             className="transition-all self-center duration-200 ease-in-out rounded-full shadow-2xl ring-inset ring-primary-light object-cover"
           />
           <p
-            className={`transition-all text-primary-light duration-200 ease-in-out ${
+            className={`transition-all duration-200 ease-in-out ${
               isToggled ? "text-[0px]" : "text-[10px] md:text-[14px]"
             } `}
           >
@@ -119,7 +129,7 @@ const dashboardOptions = [
       <div
         onClick={() => setIsToggled(!isToggled)}
         className="absolute hover:bg-text-color-dark
-   hover:border-primary-light cursor-pointer text-[24px] text-text-color top-[50px] bg-card-two right-[-20px] hover:text-primary-light  p-[10px] rounded-full "
+   hover:border-primary-light cursor-pointer text-[24px] text-text-color top-[50px] bg-bgOne right-[-20px] hover:text-primary-light  p-[10px] rounded-full "
       >
         <BsArrowLeftShort
           className={`transition-all duration-500 ease-in-out ${

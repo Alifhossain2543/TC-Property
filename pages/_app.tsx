@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <Provider store={store}>
       <Header />
       {pathnanme.includes("/dashboard") ? (
-        <div className='flex bg-card-two'>
+        <div className='flex bg-bgOne'>
           <DashboardOptions />
 
           <Component {...pageProps} />

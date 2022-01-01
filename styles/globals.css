@@ -32,5 +32,33 @@ input {
 }
 
 .dPage {
-  @apply bg-text-color-dark rounded-lg shadow-xl mr-[5px] p-[20px] pl-[30px]  mb-[10px] mt-[10px] w-full
+  @apply bg-text-color-dark !h-[90vh] overflow-auto rounded-lg shadow-xl mr-[5px] p-[20px] pl-[30px]  mb-[10px] mt-[10px] w-full
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+      border-radius: 120px;
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+.card {
+  @apply h-[120px] w-[170px] relative cursor-pointer  rounded-xl  duration-200 ease-in-out
+
+}
+
+/* border-[5px] border-t-primary-light border-b-card-color border-l-card-two-dark border-r-card-four */

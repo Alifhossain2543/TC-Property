@@ -35,6 +35,26 @@ module.exports = {
         DEFAULT: "#363645",
         dark: "#fff",
       },
+      bgOne: {
+        light: "#E0E3EB",
+        DEFAULT: "#E0E3EB",
+        dark: "#E0E3EB",
+      },
+      "card-three": {
+        light: "#77de88",
+        DEFAULT: "#77de88",
+        dark: "#77de88",
+      },
+      "card-four": {
+        light: "#82b4f9",
+        DEFAULT: "#82b4f9",
+        dark: "#82b4f9",
+      },
+      "card-five": {
+        light: "#ffc5a8",
+        DEFAULT: "#ffc5a8",
+        dark: "#ffc5a8",
+      },
     },
     extend: {},
   },

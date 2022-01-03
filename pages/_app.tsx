@@ -8,6 +8,7 @@ import ProgressBar from "@badrap/bar-of-progress"
 import Router from 'next/router'
 import {useRouter} from 'next/router'
 import DashboardOptions from '../components/base/DashboardOptions'
+import { ChakraProvider } from "@chakra-ui/react"
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()
@@ -24,17 +25,19 @@ function MyApp({ Component, pageProps }: AppProps) {
   
   return (
     <Provider store={store}>
-      <Header />
-      {pathnanme.includes("/dashboard") ? (
-        <div className='flex bg-bgOne'>
-          <DashboardOptions />
+      <ChakraProvider>
+        <Header />
+        {pathnanme.includes("/dashboard") ? (
+          <div className="flex bg-bgOne">
+            <DashboardOptions />
 
+            <Component {...pageProps} />
+          </div>
+        ) : (
           <Component {...pageProps} />
-        </div>
-      ) : (
-        <Component {...pageProps} />
-      )}
-      <Footer />
+        )}
+        <Footer />
+      </ChakraProvider>
     </Provider>
   )
 }

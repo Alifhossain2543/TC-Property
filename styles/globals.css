@@ -9,6 +9,10 @@ input {
 }
 }
 
+* {
+  font-family: Montserrat, sans-serif  !important;
+}
+
 .navlink {
   @apply  opacity-[0.5] font-extrabold hover:opacity-[1] cursor-pointer transition-opacity ease-in-out duration-300
 }

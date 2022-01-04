@@ -28,7 +28,7 @@ export default async function handler(req, res) {
     path: "/api/graphql",
   })(req, res)
 }
-
+// some changes
 export const config = {
   api: {
     bodyParser: false,

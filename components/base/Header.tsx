@@ -46,7 +46,7 @@ const Header = () => {
           className="text-primary-light cursor-pointer hover:text-secondary opacity-[0.7] hover:opacity-[1] text-[18px]"
           onClick={() => router.push("/")}
         >
-          TC Searcher
+          PP Project
         </h1>
       </div>
       <div className="flex h-full w-[70%] justify-end gap-20">
